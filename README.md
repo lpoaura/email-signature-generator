@@ -2,7 +2,7 @@
 
 Générateur de signature email de la LPO Auvergne-Rhône-Alpes.
 
-fichier `index.html` dans le dossier `www`.
+demo: https://lpoaura.github.io/email-signature-generator/
 
 Vous pouvez personnaliserles informations générales de l'organisation en cliquant sur le bouton `Personnaliser l'organisation`.
 
