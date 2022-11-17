@@ -1,143 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" 
-      content="text/html; charset=utf-8">
 
 <head>
-    <title>Générateur de signature LPOAuRA</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <head>
+        <title>Générateur de signature LPOAuRA</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
-    <style>
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-        footer {
-            background-color: whitesmoke;
-            padding: 15px;
-            text-align: center;
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
-        }
+            footer {
+                background-color: whitesmoke;
+                padding: 15px;
+                text-align: center;
 
-        label {
-            font-weight: bold;
-            padding-right: 10px;
-        }
+            }
 
-        input {
-            border: 1px solid grey;
-            padding: 5px;
-            border-radius: 5px;
-            background-color: whitesmoke;
-            width: 100%;
-        }
+            label {
+                font-weight: bold;
+                padding-right: 10px;
+            }
 
-        form div {
-            padding: 10px 0px;
-            /* border: 1px solid red; */
-        }
+            input {
+                border: 1px solid grey;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: whitesmoke;
+                width: 100%;
+            }
 
-        .render {
-            border: 1px solid grey;
-            border-radius: 5px;
-            padding: 10px;
-        }
+            form div {
+                padding: 10px 0px;
+                /* border: 1px solid red; */
+            }
 
-        h2 {
-            color: white;
-            background-color: #0087cd;
-            padding: 10px;
-            border-radius: 5px;
+            .render {
+                border: 1px solid grey;
+                border-radius: 5px;
+                padding: 10px;
+            }
 
-        }
+            h2 {
+                color: white;
+                background-color: #0087cd;
+                padding: 10px;
+                border-radius: 5px;
 
-        .row {
-            display: flex;
-            width: 100%
-        }
+            }
 
-        .info {
-            background-color: rgba(255, 182, 108, 0.653);
-            padding: 10px;
-            border-radius: 5px;
-        }
+            .row {
+                display: flex;
+                width: 100%
+            }
 
-        .row::after {
-            /* display: block;*/
-            clear: both;
-            content: "";
-        }
+            .info {
+                background-color: rgba(255, 182, 108, 0.653);
+                padding: 10px;
+                border-radius: 5px;
+            }
 
-        .col-1 {
-            width: 8.33%
-        }
+            .row::after {
+                /* display: block;*/
+                clear: both;
+                content: "";
+            }
 
-        ;
+            .col-1 {
+                width: 8.33%
+            }
 
-        .col-2 {
-            width: 16.66%;
-        }
+            ;
 
-        .col-3 {
-            width: 25%;
-        }
+            .col-2 {
+                width: 16.66%;
+            }
 
-        .col-4 {
-            width: 33.33%;
-        }
+            .col-3 {
+                width: 25%;
+            }
 
-        .col-5 {
-            width: 41.66%;
-        }
+            .col-4 {
+                width: 33.33%;
+            }
 
-        .col-6 {
-            width: 50%;
-        }
+            .col-5 {
+                width: 41.66%;
+            }
 
-        .col-7 {
-            width: 58.33%;
-        }
+            .col-6 {
+                width: 50%;
+            }
 
-        .col-8 {
-            width: 66.66%;
-        }
+            .col-7 {
+                width: 58.33%;
+            }
 
-        .col-9 {
-            width: 75%;
-        }
+            .col-8 {
+                width: 66.66%;
+            }
 
-        .col-10 {
-            width: 83.33%;
-        }
+            .col-9 {
+                width: 75%;
+            }
 
-        .col-11 {
-            width: 91.66%;
-        }
+            .col-10 {
+                width: 83.33%;
+            }
 
-        .col-12 {
-            width: 100%;
-        }
+            .col-11 {
+                width: 91.66%;
+            }
 
-        * {
-            box-sizing: border-box;
-        }
+            .col-12 {
+                width: 100%;
+            }
 
-        [class*="col-"] {
-            padding: 15px;
-            float: left;
-        }
+            * {
+                box-sizing: border-box;
+            }
 
-        .inputError {
-            border: 1px solid red;
-            background-color: rgba(255, 0, 0, 0.1);
-        }
-    </style>
-</head>
+            [class*="col-"] {
+                padding: 15px;
+                float: left;
+            }
+
+            .inputError {
+                border: 1px solid red;
+                background-color: rgba(255, 0, 0, 0.1);
+            }
+
+            button {
+                background-color: #007D82;
+                color: white;
+                padding: 5px;
+                border-radius: 5px;
+                width: 100%;
+                border: none;
+            }
+        </style>
+    </head>
 
 <body>
 
@@ -150,7 +159,7 @@ body {
                 <h1>Générateur de signature</h1>
             </div>
             <div class="col-6" style="text-align:right;">
-                <p><img src="https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png" width="200" /></p>
+                <p><img :src="info.logo_url" width="200" /></p>
             </div>
         </div>
         <div class="row">
@@ -158,13 +167,13 @@ body {
             <div id="form" class="col-6">
                 <h2>Form</h2>
 
-                <form action="/action_page.php">
+                <form>
                     <div>
                         <input :class="info.name.length ==0 ?'inputError':''" type="text" id="fname" name="fname"
                             v-model="info.name" placeholder="Votre nom">
                     </div>
                     <div>
-                        <input type="text" id="lposte" name="lposte" v-model="info.delegation"
+                        <input type="text" id="poste" name="lposte" v-model="info.delegation"
                             placeholder="Votre Délégation">
                     </div>
                     <div>
@@ -172,17 +181,40 @@ body {
                             v-model="info.poste" placeholder="Votre poste">
                     </div>
                     <div>
-                        <input type="text" id="loffice_phone" name="loffice_phone" v-model="info.office_phone"
+                        <input type="text" id="office_phone" name="loffice_phone" v-model="info.office_phone"
                             placeholder="Téléphone de bureau">
                     </div>
                     <div>
-                        <input type="text" id="lmobile_phone" name="lmobile_phone" v-model="info.mobile_phone"
+                        <input type="text" id="mobile_phone" name="lmobile_phone" v-model="info.mobile_phone"
                             placeholder="Téléphone mobile">
                     </div>
                     <div>
-                        <input type="phone" id="lagency_address" name="lagency_address" v-model="info.agency_address"
+                        <input type="phone" id="agency_address" name="lagency_address" v-model="info.agency_address"
                             placeholder="Adresse de correspondance">
                     </div>
+                    <div v-if="advanced_form">
+                        <div>
+                            <label for="organisation_name">Nom de l'organisation</label>
+                            <input id="organisation_name" name="organisation_name" v-model="info.organisation_name"
+                                placeholder="Nom de l'organisation">
+                        </div>
+                        <div>
+                            <label for="head_office_address">Addresse du siège social</label>
+                            <input id="organisation_name" name="head_office_address" v-model="info.head_office_address"
+                                placeholder="Addresse du siège social">
+                        </div>
+                        <div>
+                            <label for="organisation_name">URL du site de l'organisation</label>
+                            <input id="logo_url" name="logo_url" v-model="info.organisation_web_url"
+                                placeholder="URL du site de l'organisation">
+                        </div>
+                        <div>
+                            <label for="organisation_name">URL publique du logo (png ou svg)</label>
+                            <input id="logo_url" name="logo_url" v-model="info.logo_url" placeholder="URL du logo">
+                        </div>
+                    </div>
+                    <button type="button"
+                        @click="advanced_form = !advanced_form">{{advanced_form ? 'Cacher les options de personnalisation de l\'organisation': 'Personnaliser l\'organisation'}}</button>
                 </form>
             </div>
             <div id="preview" class="col-6">
@@ -193,7 +225,7 @@ body {
                     <div style="font-size: 0.9rem;  font-family: Arial, Helvetica, sans-serif; color: #191919">
                         <p style="color: #f55f19">
                             <strong>{{info.name ? info.name : '<< VOTRE NOM>>' }}</strong><br />
-                            LPO Auvergne-Rhône-Alpes <span v-if="info.delegation">- Délégation territoriale
+                            {{info.organisation_name}} <span v-if="info.delegation">- Délégation territoriale
                                 {{info.delegation}}</span>
                         </p>
                         <p><strong>{{info.poste ? info.poste: '<< VOTRE POSTE>>' }}</strong></p>
@@ -205,19 +237,19 @@ body {
                             <span v-if="info.mobile_phone.length > 0">Mobile: {{info.mobile_phone}}</span>
                         </p>
                         <p style="font-size: 0.8rem; color:  #0087cd ;">
-                            <strong>Siège social</strong> : Maison de l'environnement, 14 avenue Tony Garnier 69007 Lyon
+                            <strong>Siège social</strong> : {{info.head_office_address}}
                             <br />
                             <span v-if="info.agency_address.length > 0"><strong>Adresse de correspondance</strong> :
                                 {{info.agency_address}}</span>
                         </p>
                         <p style="font-size: 0.8rem;">
-                            <a href="https://auvergne-rhone-alpes.lpo.fr">https://auvergne-rhone-alpes.lpo.fr</a>
+                            <a :href="info.organisation_web_url"
+                                title="Site de l'organisation">{{info.organisation_web_url}}</a>
                         </p>
 
 
-                        <p><a href="https://auvergne-rhone-alpes.lpo.fr"><img
-				    src="https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png" 
-                                    title="Logo LPO Auvergne-Rhône-Alpes" width="200" /></a></p>
+                        <p><a :href="info.organisation_web_url"><img :src="info.logo_url" title="Site de l'organisation"
+                                    width="200" /></a></p>
                     </div>
                 </div>
             </div>
@@ -246,10 +278,15 @@ body {
                         poste: '',
                         office_phone: '',
                         mobile_phone: '',
-                        agency_address: ''
+                        agency_address: '',
+                        head_office_address: "Maison de l'environnement, 14 avenue Tony Garnier 69007 Lyon",
+                        organisation_name: 'LPO Auvergne-Rhône-Alpes',
+                        organisation_web_url: 'https://auvergne-rhone-alpes.lpo.fr',
+                        logo_url: 'https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png'
                     },
                     code: null,
-                    htmlCode: ''
+                    htmlCode: '',
+                    advanced_form: false,
                 }
             },
             watch: {
