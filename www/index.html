@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" 
+      content="text/html; charset=utf-8">
+
+<head>
+    <title>Générateur de signature LPOAuRA</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
+    <style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+        footer {
+            background-color: whitesmoke;
+            padding: 15px;
+            text-align: center;
+
+        }
+
+        label {
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        input {
+            border: 1px solid grey;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: whitesmoke;
+            width: 100%;
+        }
+
+        form div {
+            padding: 10px 0px;
+            /* border: 1px solid red; */
+        }
+
+        .render {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        h2 {
+            color: white;
+            background-color: #0087cd;
+            padding: 10px;
+            border-radius: 5px;
+
+        }
+
+        .row {
+            display: flex;
+            width: 100%
+        }
+
+        .info {
+            background-color: rgba(255, 182, 108, 0.653);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .row::after {
+            /* display: block;*/
+            clear: both;
+            content: "";
+        }
+
+        .col-1 {
+            width: 8.33%
+        }
+
+        ;
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        [class*="col-"] {
+            padding: 15px;
+            float: left;
+        }
+
+        .inputError {
+            border: 1px solid red;
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+        <div class="row">
+            <div class="col-6">
+
+                <h1>Générateur de signature</h1>
+            </div>
+            <div class="col-6" style="text-align:right;">
+                <p><img src="https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png" width="200" /></p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div id="form" class="col-6">
+                <h2>Form</h2>
+
+                <form action="/action_page.php">
+                    <div>
+                        <input :class="info.name.length ==0 ?'inputError':''" type="text" id="fname" name="fname"
+                            v-model="info.name" placeholder="Votre nom">
+                    </div>
+                    <div>
+                        <input type="text" id="lposte" name="lposte" v-model="info.delegation"
+                            placeholder="Votre Délégation">
+                    </div>
+                    <div>
+                        <input :class="info.poste.length ==0 ?'inputError':''" type="text" id="lposte" name="lposte"
+                            v-model="info.poste" placeholder="Votre poste">
+                    </div>
+                    <div>
+                        <input type="text" id="loffice_phone" name="loffice_phone" v-model="info.office_phone"
+                            placeholder="Téléphone de bureau">
+                    </div>
+                    <div>
+                        <input type="text" id="lmobile_phone" name="lmobile_phone" v-model="info.mobile_phone"
+                            placeholder="Téléphone mobile">
+                    </div>
+                    <div>
+                        <input type="phone" id="lagency_address" name="lagency_address" v-model="info.agency_address"
+                            placeholder="Adresse de correspondance">
+                    </div>
+                </form>
+            </div>
+            <div id="preview" class="col-6">
+                <h2>Prévisualisation (pour outlook)</h2>
+                <p class="info">A copier-Coller dans outlook</p>
+                <div id="render" class="render">
+
+                    <div style="font-size: 0.9rem;  font-family: Arial, Helvetica, sans-serif; color: #191919">
+                        <p style="color: #f55f19">
+                            <strong>{{info.name ? info.name : '<< VOTRE NOM>>' }}</strong><br />
+                            LPO Auvergne-Rhône-Alpes <span v-if="info.delegation">- Délégation territoriale
+                                {{info.delegation}}</span>
+                        </p>
+                        <p><strong>{{info.poste ? info.poste: '<< VOTRE POSTE>>' }}</strong></p>
+
+                        </p>
+                        <p v-if="info.office_phone.length > 0 || info.mobile_phone.length > 0"
+                            style="color:  #0087cd ;">
+                            <span v-if="info.office_phone.length > 0">Bureau: {{info.office_phone}}</span><br>
+                            <span v-if="info.mobile_phone.length > 0">Mobile: {{info.mobile_phone}}</span>
+                        </p>
+                        <p style="font-size: 0.8rem; color:  #0087cd ;">
+                            <strong>Siège social</strong> : Maison de l'environnement, 14 avenue Tony Garnier 69007 Lyon
+                            <br />
+                            <span v-if="info.agency_address.length > 0"><strong>Adresse de correspondance</strong> :
+                                {{info.agency_address}}</span>
+                        </p>
+                        <p style="font-size: 0.8rem;">
+                            <a href="https://auvergne-rhone-alpes.lpo.fr">https://auvergne-rhone-alpes.lpo.fr</a>
+                        </p>
+
+
+                        <p><a href="https://auvergne-rhone-alpes.lpo.fr"><img
+				    src="https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png" 
+                                    title="Logo LPO Auvergne-Rhône-Alpes" width="200" /></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>code HTML (pour Thunderbird)</h2>
+                <p class="info">A copier-Coller dans Thunderbird</p>
+                <div class="render" @click="copyToClipboard()">
+                    <pre><code>{{code}}</code></pre>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    info: {
+                        name: '',
+                        delegation: '',
+                        poste: '',
+                        office_phone: '',
+                        mobile_phone: '',
+                        agency_address: ''
+                    },
+                    code: null,
+                    htmlCode: ''
+                }
+            },
+            watch: {
+                // whenever question changes, this function will run
+                info: {
+                    handler(newValue, oldValue) {
+                        localStorage.setItem('storedData', JSON.stringify(this.info))
+                        this.generateCode()
+                    },
+                    deep: true
+                }
+            },
+            methods: {
+                generateCode() {
+                    console.debug('info', this.info)
+                    const htmlCode = document.getElementById('render')
+                    console.log('htmlCode', htmlCode.innerHTML)
+                    this.code = html_beautify(htmlCode.innerHTML)
+                    console.log(this.code)
+                },
+                copyToClipboard() {
+                    this.generateCode()
+                    navigator.clipboard.writeText(this.code)
+                        .then(() => {
+                            alert('Text copied to clipboard');
+                        })
+                        .catch(err => {
+                            alert('Error in copying text: ', err);
+                        });
+                }
+            },
+            mounted() {
+                if (localStorage.getItem('storedData') != null) {
+                    const storedData = localStorage.getItem('storedData')
+                    this.info = JSON.parse(storedData);
+                }
+                // this.generateCode()
+
+            }
+        }).mount('#app')
+    </script>
+</body>
+<footer>
+    Made with ♥ by LpoAuRA
+</footer>
+
+</html>
