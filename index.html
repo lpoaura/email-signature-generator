@@ -170,7 +170,7 @@
                 <form>
                     <div>
                         <input :class="info.name.length ==0 ?'inputError':''" type="text" id="fname" name="fname"
-                            v-model="info.name" placeholder="Votre nom">
+                            v-model="info.name" placeholder="Prénom NOM">
                     </div>
                     <div>
                         <input type="text" id="poste" name="lposte" v-model="info.delegation"
@@ -224,7 +224,7 @@
 
                     <div style="font-size: 0.9rem;  font-family: Arial, Helvetica, sans-serif; color: #191919">
                         <p style="color: #f55f19">
-                            <strong>{{info.name ? info.name : '<< VOTRE NOM>>' }}</strong><br />
+                            <strong>{{info.name ? info.name : '<< Prénom NOM>>' }}</strong><br />
                             {{info.organisation_name}} <span v-if="info.delegation">- Délégation territoriale
                                 {{info.delegation}}</span>
                         </p>
