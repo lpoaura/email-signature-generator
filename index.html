@@ -50,7 +50,7 @@
 
             h2 {
                 color: white;
-                background-color: #000;
+                background-color: #0087cd;
                 padding: 10px;
                 border-radius: 5px;
 
@@ -62,7 +62,7 @@
             }
 
             .info {
-                background-color: #ccc;
+                background-color: rgba(255, 182, 108, 0.653);
                 padding: 10px;
                 border-radius: 5px;
             }
@@ -138,7 +138,7 @@
             }
 
             button {
-                background-color: #666;
+                background-color: #007D82;
                 color: white;
                 padding: 5px;
                 border-radius: 5px;
@@ -222,8 +222,8 @@
                 <p class="info">A copier-Coller dans outlook</p>
                 <div id="render" class="render">
 
-                    <div style="font-size: 0.9rem;  font-family: Arial, Helvetica, sans-serif; color: black">
-                        <p style="color: black">
+                    <div style="font-size: 0.9rem;  font-family: Arial, Helvetica, sans-serif; color: #191919">
+                        <p style="color: #f55f19">
                             <strong>{{info.name ? info.name : '<< Prénom NOM>>' }}</strong><br />
                             {{info.organisation_name}} <span v-if="info.delegation">- Délégation territoriale
                                 {{info.delegation}}</span>
@@ -232,11 +232,11 @@
 
                         </p>
                         <p v-if="info.office_phone.length > 0 || info.mobile_phone.length > 0"
-                            style="color:  black ;">
+                            style="color:  #0087cd ;">
                             <span v-if="info.office_phone.length > 0">Bureau: {{info.office_phone}}</span><br>
                             <span v-if="info.mobile_phone.length > 0">Mobile: {{info.mobile_phone}}</span>
                         </p>
-                        <p style="font-size: 0.8rem; color:  black ;">
+                        <p style="font-size: 0.8rem; color:  #0087cd ;">
                             <strong>Siège social</strong> : {{info.head_office_address}}
                             <br />
                             <span v-if="info.agency_address.length > 0"><strong>Adresse de correspondance</strong> :
@@ -250,10 +250,6 @@
 
                         <p><a :href="info.organisation_web_url"><img :src="info.logo_url" title="Site de l'organisation"
                                     width="200" /></a></p>
-                        
-                        <p><a href="https://auvergne-rhone-alpes.lpo.fr/la-nature-en-deuil/"><img src="https://auvergne-rhone-alpes.lpo.fr/bandeau_nature_en_deuil.jpg" title="Site de l'organisation"
-                                        width="500" /></a><br>
-                                        Aujourd’hui, la nature est en deuil. Demain, nous reprendrons le combat. #LaNatureEnDeuil</p>                
                     </div>
                 </div>
             </div>
@@ -286,7 +282,7 @@
                         head_office_address: "100 rue des Fougères - 69009 Lyon",
                         organisation_name: 'LPO Auvergne-Rhône-Alpes',
                         organisation_web_url: 'https://auvergne-rhone-alpes.lpo.fr',
-                        logo_url: 'https://auvergne-rhone-alpes.lpo.fr/logo-lpo-noir-blanc.png'
+                        logo_url: 'https://auvergne-rhone-alpes.lpo.fr/logo_lpo_aura.png'
                     },
                     code: null,
                     htmlCode: '',
